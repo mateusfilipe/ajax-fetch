@@ -1,0 +1,56 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagens</title>
+    <style>
+        .frame {
+            width: 50%;
+            height: 30%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Você está satisfeito com sua compra?</h1><br />
+        <button id="prox" class="" onclick="satisfacao('sim')">Sim <label id="sim">0</label></button>
+        <button id="prox" class="" onclick="satisfacao('nao')">Não <label id="nao">0</label></button>
+    </div>
+    <script>
+        const url = "http://localhost:8080/contador";
+        const options =
+            fetch(url)
+                .then(resp => resp.json())
+                .then(ret => {
+                    document.getElementById('sim').innerHTML = ret.sim
+                    document.getElementById('nao').innerHTML = ret.nao
+                })
+                .catch(
+                    error => console.error(error)
+                );
+        function satisfacao(resp) {
+            fetch(url,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ opcao: resp })
+                })
+                .then(resp => resp.json())
+                .then(ret => {
+                    document.getElementById('sim').innerHTML = ret.sim
+                    document.getElementById('nao').innerHTML = ret.nao
+                })
+                .catch(
+                    error => console.error(error)
+                );
+        }
+    </script>
+</body>
+
+</html>

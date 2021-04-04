@@ -15,7 +15,7 @@
 
 <body>
     <div class="container">
-        <img id="img" class="frame" src="" alt="">
+        <img id="img" class="frame" src="" alt=""><br/>
         <button id="prox" class="" onclick="next()">Próxima</button>
     </div>
     <script>
@@ -24,7 +24,7 @@
         fetch(url)
             .then(resp => resp.json())
             .then(ret => {
-                document.getElementById('img').src = ret.images
+                document.getElementById('img').src = ret.img
             })
             .catch(
                 error => console.error(error)
@@ -33,7 +33,7 @@
             fetch(url)
                 .then(resp => resp.json())
                 .then(ret => {
-                    document.getElementById('img').src = ret.images
+                    document.getElementById('img').src = ret.img
                 })
                 .catch(
                     error => console.error(error)

@@ -22,7 +22,7 @@ const imagens = [
 
 let currentImg = 0
 app.get('/imagens',(req, res, next)=>{
-    res.send({images: imagens[currentImg]})
+    res.send({img: imagens[currentImg]})
     currentImg++
     if(currentImg > imagens.length){
         currentImg = 0
