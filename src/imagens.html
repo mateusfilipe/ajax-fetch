@@ -21,19 +21,19 @@
     <script>
         const url = "http://localhost:8080/imagens";
         const options = { method: 'GET', mode: 'no-cors' }
-        fetch(url, options)
+        fetch(url)
             .then(resp => resp.json())
             .then(ret => {
-                document.getElementById('img').value = ret.img
+                document.getElementById('img').src = ret.images
             })
             .catch(
                 error => console.error(error)
             );
         function next() {
-            fetch(url, options)
+            fetch(url)
                 .then(resp => resp.json())
                 .then(ret => {
-                    document.getElementById('img').value = ret.img
+                    document.getElementById('img').src = ret.images
                 })
                 .catch(
                     error => console.error(error)

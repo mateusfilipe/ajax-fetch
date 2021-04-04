@@ -5,6 +5,7 @@ const app = express()
 
 app.use(express.static('.'))
 app.use(express.json())
+app.use(express.urlencoded({extended:true}))
 
 app.listen(port, () => {
     console.log(`Servidor iniciado! Porta: ${port}`)
@@ -18,6 +19,7 @@ const imagens = [
     "../server/img/garfield8.png",
     "../server/img/garfield20.jpg"
 ]
+
 let currentImg = 0
 app.get('/imagens',(req, res, next)=>{
     res.send({images: imagens[currentImg]})
