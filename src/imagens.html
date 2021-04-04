@@ -1,0 +1,45 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagens</title>
+    <style>
+        .frame {
+            width: 50%;
+            height: 30%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img id="img" class="frame" src="" alt="">
+        <button id="prox" class="" onclick="next()">Próxima</button>
+    </div>
+    <script>
+        const url = "http://localhost:8080/imagens";
+        const options = { method: 'GET', mode: 'no-cors' }
+        fetch(url, options)
+            .then(resp => resp.json())
+            .then(ret => {
+                document.getElementById('img').value = ret.img
+            })
+            .catch(
+                error => console.error(error)
+            );
+        function next() {
+            fetch(url, options)
+                .then(resp => resp.json())
+                .then(ret => {
+                    document.getElementById('img').value = ret.img
+                })
+                .catch(
+                    error => console.error(error)
+                );
+        }
+    </script>
+</body>
+
+</html>
